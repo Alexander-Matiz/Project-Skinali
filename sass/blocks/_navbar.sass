@@ -75,3 +75,20 @@
         font-size: 14px
         display: block
         color: $text-color-light
+
+@media (max-width: 991px)
+    .navbar
+        &__mobile, &__landline
+            display: none
+
+@media (max-width: 576px)
+    .logo
+            display: none
+    .menu
+        height: 50%
+        &-wrap 
+            height: 100%
+        &__nav
+            flex-direction: column
+            justify-content: space-between
+            height: 100%
