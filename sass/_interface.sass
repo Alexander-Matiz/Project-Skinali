@@ -19,9 +19,42 @@ body
     color: #fff
     +bold
 
+.input, .select
+    height: 80px
+    padding: 15px
+    border: 1px solid #ddd;
+
+
+input[type="checkbox"]
+        display: none
+        &:checked + label::before
+            background-color: $primary
+            border-width: 5px
+
+.checkbox
+    &-label
+        display: flex
+        align-items: center
+        margin-right: 40px
+        cursor: pointer
+        &::before
+            content: ''
+            width: 30px
+            height: 30px
+            border: 1px solid #ddd
+            background-color: transparent
+            margin-right: 20px
+
+.bg-secondary
+    background-color: $bg-secondary
+
+
 @media (max-width: 576px)
     .button-o
-            font-size: 10px
+        font-size: 10px
+    .button
+        font-size: 14px
+        padding: 20px
 
 @media (max-width: 386px)
     .button-o
