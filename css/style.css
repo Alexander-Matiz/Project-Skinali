@@ -48,6 +48,108 @@ html {
   font-style: normal;
 }
 
+/* Slider */
+.slick-slider {
+  position: relative;
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-list:focus {
+  outline: none;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slick-track:before, .slick-track:after {
+  content: "";
+  display: table;
+}
+
+.slick-track:after {
+  clear: both;
+}
+
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.slick-slide {
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  display: none;
+}
+
+[dir="rtl"] .slick-slide {
+  float: right;
+}
+
+.slick-slide img {
+  display: block;
+}
+
+.slick-slide.slick-loading img {
+  display: none;
+}
+
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+  display: none;
+}
+
 body {
   font-family: 'Proxima Nova Light', sans-serif;
   color: #262626;
@@ -114,10 +216,62 @@ img {
   width: 30px;
 }
 
-.input, .select {
+.input {
   height: 80px;
   padding: 15px;
   border: 1px solid #ddd;
+}
+
+.select {
+  height: 80px;
+  border: 1px solid #ddd;
+  position: relative;
+}
+
+.select::after {
+  content: '';
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  background: url("../img/offer/arrow-down.png") no-repeat center/cover;
+}
+
+.select--checked {
+  line-height: 80px;
+  padding-left: 30px;
+}
+
+.select:hover {
+  cursor: pointer;
+}
+
+.select__dropdown {
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  margin: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  list-style: none;
+  padding: 0;
+  display: none;
+}
+
+.select__dropdown--open {
+  display: block;
+}
+
+.select__option {
+  padding: 30px;
+}
+
+.select__option:hover {
+  background-color: #f1f1f1;
 }
 
 input[type="checkbox"] {
@@ -181,7 +335,7 @@ input[type="checkbox"]:checked + label::before {
   top: 0;
   width: 100%;
   background-color: #fff;
-  z-index: 99;
+  z-index: 400;
 }
 
 .navbar-wrap {
@@ -218,7 +372,7 @@ input[type="checkbox"]:checked + label::before {
 }
 
 .menu {
-  z-index: 21;
+  z-index: 399;
   position: fixed;
   top: 80px;
   left: 0;
@@ -277,6 +431,14 @@ input[type="checkbox"]:checked + label::before {
   border-left: 1px solid rgba(81, 11, 186, 0.1);
   height: 80px;
   width: 70px;
+}
+
+.menu-button:hover {
+  cursor: pointer;
+}
+
+.menu-button:focus {
+  outline: 0;
 }
 
 .menu-button__line {
@@ -569,6 +731,13 @@ input[type="checkbox"]:checked + label::before {
   position: relative;
   -webkit-box-shadow: 7px 5px 21px rgba(0, 0, 0, 0.1);
           box-shadow: 7px 5px 21px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.catalog-card:hover .catalog-card__buttons {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  opacity: 1;
 }
 
 .catalog-card__buttons {
@@ -578,6 +747,11 @@ input[type="checkbox"]:checked + label::before {
   position: absolute;
   right: 0;
   bottom: 0;
+  opacity: 0;
+  -webkit-transition: .2s;
+  transition: .2s;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
 }
 
 .catalog-card__button {
@@ -587,6 +761,7 @@ input[type="checkbox"]:checked + label::before {
   margin: 0;
   padding: 10px;
   height: 30px;
+  cursor: pointer;
 }
 
 .catalog-card__tag {
@@ -616,6 +791,10 @@ input[type="checkbox"]:checked + label::before {
 
 .catalog__description {
   display: block;
+}
+
+.button-like {
+  cursor: pointer;
 }
 
 @media (max-width: 1199px) {
@@ -881,6 +1060,95 @@ input[type="checkbox"]:checked + label::before {
   }
   .step__text {
     max-width: 280px;
+  }
+}
+
+.before-slider-wrap {
+  position: relative;
+  max-width: 640px;
+  margin: auto;
+  z-index: 200;
+}
+
+.before-slider-arrows {
+  position: absolute;
+  z-index: -2;
+  top: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+.before-slider__dots {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+  margin: 28px 0 0;
+}
+
+.before-slider__dots li {
+  list-style: none;
+}
+
+.before-slider__dots li.slick-active button {
+  background-color: #507fe1;
+}
+
+.before-slider__dots button {
+  padding: 0;
+  margin: 5px;
+  border: none;
+  font-size: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #d1d1d1;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: 0;
+}
+
+.arrow {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.arrow:focus {
+  outline: 0;
+}
+
+.arrow-left {
+  -webkit-transform: translateX(-200%);
+          transform: translateX(-200%);
+  width: 25px;
+  height: 25px;
+}
+
+.arrow-right {
+  -webkit-transform: translateX(200%);
+          transform: translateX(200%);
+  width: 25px;
+  height: 25px;
+}
+
+@media (max-width: 768px) {
+  .before-slider-arrows {
+    display: none;
   }
 }
 

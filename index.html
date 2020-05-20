@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Фабрика Скинали</title>
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/twentytwenty.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -61,7 +62,7 @@
                     Гарантия минимальной цены на скинали
                 </h1>
                 <span class="hero__subtitle">от 3 000 р/м2</span>
-                <button class="button hero__button">Заказать скинали</button>
+                <a href="#offer" class="button hero__button">Заказать скинали</a>
             </div>
             <!-- /.container -->
         </div>
@@ -70,7 +71,7 @@
     <!-- /.header -->
 
     <main class="main">
-        <section class="offer bg-secondary">
+        <section id="offer" class="offer bg-secondary">
             <div class="container">
                 <div class="offer__block offer-block offer-block--calc--bg">
                     <h2 class="offer__title">Оставьте заявку на расчет</h2>
@@ -78,11 +79,15 @@
                     <form class="form offer__form" action="#">
                         <div class="form__row">
                             <div class="form__group">
-                                <label for="kind-glass" class="form__label">Вид стекла</label>
-                                <select class="select form__select" id="kind-glass">
-                                    <option value="С печатью" selected>С печатью</option>
-                                    <option value="Без печати">Без печати</option>
-                                </select>
+                                <label class="form__label">Вид стекла</label>
+                                <input type="hidden" name="type" id="select-type" value="С печатью">
+                                <div class="select form__select" id="kind-glass">
+                                    <div class="select--checked">С печатью</div>
+                                    <ul class="select__dropdown">
+                                        <li class="select__option" data-value="С печатью">С печатью</li>
+                                        <li class="select__option" data-value="Без печати">Без печати</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="form__group">
                                 <label for="width" class="form__label">Ширина, см</label>
@@ -525,6 +530,43 @@
             </div>
         </section>
 
+        <section class="section before">
+            <div class="container">
+                <h2 class="section-title section__title">До и после</h2>
+                <div class="before-slider-wrap">
+                    <div class="before-slider">
+                        <div class="before-slider__item">
+                            <div class="before-after">
+                                <img src="img/before-slider/sample-before.png" alt="Before">
+                                <img src="img/before-slider/sample-after.png" alt="After">
+                            </div>
+                        </div>
+                        <div class="before-slider__item">
+                            <div class="before-after">
+                                <img src="img/before-slider/sample-before.png" alt="Before">
+                                <img src="img/before-slider/sample-after.png" alt="After">
+                            </div>
+                        </div>
+                        <div class="before-slider__item">
+                            <div class="before-after">
+                                <img src="img/before-slider/sample-before.png" alt="Before">
+                                <img src="img/before-slider/sample-after.png" alt="After">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="before-slider-arrows">
+                        <button class="arrow arrow-left">
+                            <img src="img/before-slider/arrow-prev.png" alt="Arrow prev">
+                        </button>
+                        <button class="arrow arrow-right">
+                            <img src="img/before-slider/arrow-next.png" alt="Arrow next">
+                        </button>
+                    </div>
+                </div>
+                <!-- /.before-slider-wrap -->
+            </div>
+        </section>
+
         <section class="section reviews">
             <div class="container">
                 <h2 class="section-title section__title">
@@ -727,8 +769,14 @@
 
     </main>
     
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <!-- Подключение виджета обратной связи через соц. сети -->
-    <script type="text/javascript" src="https://spikmi.com/Widget?Id=3438"></script>
+    <script src="https://spikmi.com/Widget?Id=3438"></script>
+    <script src="js/jquery.event.move.js"></script>
+    <script src="js/jquery.twentytwenty.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.maskedinput.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

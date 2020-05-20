@@ -4,7 +4,7 @@
     top: 0
     width: 100%
     background-color: #fff
-    z-index: 99
+    z-index: 400
     &-wrap
         display: flex
         align-items: center
@@ -27,7 +27,7 @@
 
 
 .menu
-    z-index: 21
+    z-index: 399
     position: fixed
     top: 80px
     left: 0
@@ -61,6 +61,10 @@
         border-left: 1px solid rgba(#510bba, 0.1)
         height: 80px
         width: 70px
+        &:hover
+            cursor: pointer
+        &:focus
+            outline: 0
         &__line
             width: 20px
             height: 3px

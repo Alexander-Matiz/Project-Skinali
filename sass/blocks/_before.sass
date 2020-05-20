@@ -1,0 +1,58 @@
+.before
+    &-slider
+        &-wrap
+            position: relative
+            max-width: 640px
+            margin: auto
+            z-index: 200;
+        &-arrows
+            position: absolute
+            z-index: -2
+            top: 50%
+            display: flex
+            justify-content: space-between
+            width: 100%
+            transform: translateY(-100%)
+        &__dots
+            display: flex !important
+            justify-content: center
+            align-items: center
+            padding: 0
+            margin: 28px 0 0
+            li
+                list-style: none
+                &.slick-active button
+                    background-color: $primary
+            button
+                padding: 0
+                margin: 5px
+                border: none
+                font-size: 0
+                width: 10px
+                height: 10px
+                background-color: #d1d1d1
+                border-radius: 50%
+                cursor: pointer
+                outline: 0
+.arrow
+    background-color: transparent
+    border: none
+    margin: 0
+    padding: 0
+    cursor: pointer
+    &:focus
+        outline: 0
+    &-left
+        transform: translateX(-200%)
+        width: 25px
+        height: 25px
+    &-right
+        transform: translateX(200%)
+        width: 25px
+        height: 25px
+
+@media (max-width: 768px)
+    .before
+        &-slider
+            &-arrows
+                display: none
