@@ -52,6 +52,17 @@ $(function() {
 
         //Настройка маски ввода
         $('input[type="tel"]').mask("+7 (999) 999-99-99")
+
+        // Показ карты, только тогда, когда до блока с картой дошли
+        var reviews = $('.reviews');
+        var reviewsTop = reviews.offset().top;
+        $(window).bind('scroll', function() {
+            var windowTop = $(this).scrollTop();
+            if (windowTop > reviewsTop) {
+                $('#map').html('<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A04799ee2b6bac890b1a7e1c7eb7ae2d632cab39f5c93fa138ce33fcd04faf41c&amp;width=100%25&amp;height=410&amp;lang=ru_UA&amp;scroll=false"></script>');
+                $(window).unbind('scroll')
+            }
+        });
     });
 
 });
